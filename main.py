@@ -9,7 +9,7 @@ def date(update, context):
     update.message.reply_text(f'Date - {date[0]} {data[1]} {data[2]} {data[4]}')
 
 
-def time(update, context):
+def times(update, context):
     t = time.localtime()
     data = time.asctime(t).split()
     update.message.reply_text(f'Time - {data[3]}')
@@ -18,7 +18,7 @@ def time(update, context):
 def main():
     updater = Updater('1187007411:AAE61PeWLmJRb9BD9U2L9dIV-igj0fq3Uxs', use_context=True)
     dp = updater.dispatcher
-    dp.add_handler(CommandHandler("time", time))
+    dp.add_handler(CommandHandler("time", times))
     dp.add_handler(CommandHandler("date", date))
     updater.start_polling()
     updater.idle()
