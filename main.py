@@ -6,7 +6,7 @@ import time
 def date(update, context):
     t = time.localtime()
     data = time.asctime(t).split()
-    update.message.reply_text(f'Date - {date[0]} {data[1]} {data[2]} {data[4]}')
+    update.message.reply_text(f'Date - {data[0]} {data[1]} {data[2]} {data[4]}')
 
 
 def times(update, context):
