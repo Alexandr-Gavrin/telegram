@@ -1,15 +1,25 @@
 from telegram.ext import Updater, MessageHandler, Filters
+from telegram.ext import CommandHandler
+import time
 
 
-def echo(update, context):
-    update.message.reply_text(f'Я получил сообщение {update.message.text}.')
+def date(update, context):
+    t = time.localtime()
+    data = time.asctime(t).split()
+    update.message.reply_text(f'Date - {date[0]} {data[1]} {data[2]} {data[4]}')
+
+
+def time(update, context):
+    t = time.localtime()
+    data = time.asctime(t).split()
+    update.message.reply_text(f'Time - {data[3]}')
 
 
 def main():
     updater = Updater('1187007411:AAE61PeWLmJRb9BD9U2L9dIV-igj0fq3Uxs', use_context=True)
     dp = updater.dispatcher
-    text_handler = MessageHandler(Filters.text, echo)
-    dp.add_handler(text_handler)
+    dp.add_handler(CommandHandler("time", time))
+    dp.add_handler(CommandHandler("date", date))
     updater.start_polling()
     updater.idle()
 
